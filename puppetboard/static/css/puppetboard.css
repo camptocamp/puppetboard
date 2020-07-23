@@ -13,22 +13,8 @@ h1.ui.header.no-margin-bottom {
   margin-bottom: 0;
 }
 
-.tablesorter-header-inner {
-  float: left;
-}
-
-th.tablesorter-headerAsc::after {
-  content: '\25b4' !important;
-  float: right;
-}
-
-th.tablesorter-headerDesc::after {
-  content: '\25be' !important;
-  float: right;
-}
-
 .ui.grid.padding-bottom {
-  padding-bottom: 40px !important;
+  padding-bottom: 4em !important;
 }
 
 .status {
@@ -39,6 +25,7 @@ th.tablesorter-headerDesc::after {
 
 .ui.table[class*="very compact"] td {
   padding: 0.15em 0.1em;
+  max-width: 320px;
 }
 
 .factlist li {
@@ -58,7 +45,7 @@ th.tablesorter-headerDesc::after {
   color: #AA4643;
 }
 
-.ui.label.failed {
+.ui.label.failed, .ui.label.events.failure {
   background-color: #AA4643;
 }
 
@@ -66,7 +53,7 @@ th.tablesorter-headerDesc::after {
   color: #4572A7;
 }
 
-.ui.label.changed {
+.ui.label.changed, .ui.label.events.success {
   background-color: #4572A7;
 }
 
@@ -82,8 +69,12 @@ th.tablesorter-headerDesc::after {
   color: #DB843D;
 }
 
-.ui.label.noop {
+.ui.label.noop, .ui.label.events.noop {
   background-color: #DB843D;
+}
+
+.ui.label.resources.total {
+  background-color: #989898;
 }
 
 .ui.label.unchanged {
@@ -94,7 +85,7 @@ th.tablesorter-headerDesc::after {
   color: orange;
 }
 
-.ui.label.skipped {
+.ui.label.skipped, .ui.label.resources.skipped {
   background-color: orange;
 }
 
@@ -193,4 +184,8 @@ th.tablesorter-headerDesc::after {
   margin: 0;
   margin-right: -50%;
   transform: translate(-50%, -50%)
+}
+
+#dailyReportsChartContainer {
+  height: 160px;
 }

@@ -4,7 +4,7 @@
 <table class='ui basic table'>
   <thead>
     <tr>
-      <th>Hostname</th>
+      <th>Certname</th>
       <th>Configuration version</th>
       <th>Start time</th>
       <th>End time</th>
@@ -14,7 +14,7 @@
     <tr>
       <td><a href="{{url_for('node', env=current_env, node_name=report.node)}}">{{ report.node }}</a></td>
       <td>
-        {{report.version}}
+        {{report.version|safe}}
       </td>
       <td rel="utctimestamp">
         {{report.start}}
@@ -77,7 +77,11 @@
         <td rel="utctimestamp">{{log.time}}</td>
         <td>{{log.source}}</td>
         <td>{{log.tags|join(', ')}}</td>
-        <td>{{log.message}}</td>
+        {% if '\n' in log.message %}
+          <td><pre>{{log.message}}</pre></td>
+        {% else %}
+          <td>{{log.message}}</td>
+        {% endif %}
         {% if log.file != None and log.line != None %}
           <td>{{log.file}}:{{log.line}}</td>
         {% else %}
